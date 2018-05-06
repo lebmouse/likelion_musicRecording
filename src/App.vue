@@ -7,9 +7,9 @@
       <music-body></music-body>
       <music-foot></music-foot>
     </v-content>
-    <v-footer :fixed="fixed" app>
+    <!-- <v-footer :fixed="fixed" app>
       <span>&copy; 2017</span>
-    </v-footer>
+    </v-footer> -->
   </v-app>
 </template>
 
