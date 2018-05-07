@@ -12,6 +12,18 @@
             </div>
         </div>
         <div id="navContent2" class="nav" @click="drawing">
+            <div class="monthBox">
+                <div class="month-wrapperr">
+                    <div class="head" v-for="d in day" :key="d">{{d}}</div>
+                    <div class="dayBox" v-for="i in 35" :key="i">
+                        <div class="day">
+                            <div class="dayText">
+                                {{i}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
@@ -23,12 +35,12 @@
 export default {
     data() {
         return {
-            draw: false
+            draw: false,
+            day: ['Sun', 'Mon', 'Tue', 'Wed', 'Thr', 'Fri', 'Sat']
         }
     },
     methods: {
         drawing(e) {
-
             let target = document.getElementById('navContent2');
             if (this.draw === false) {
                 target.classList.add("active");
@@ -36,7 +48,6 @@ export default {
                 target.classList.remove("active");
             }
             this.draw = !this.draw;
-
         }
     }
 }
@@ -44,75 +55,115 @@ export default {
 
 <style scoped>
 .navBox {
-    margin-left: 100px;
+    margin-left: 80px;
 }
 
 .navCover {
     height: 100%;
-    width: 100px;
-    background-color: red;
-    border: 2px solid orange;
+    width: 80px;
+    border-top: 2px solid white;
+    border-left:2px solid white;
+    border-bottom: 3px solid white;
+    box-sizing: border-box;
     position: fixed;
     float: left;
-    z-index: 5;
+    z-index: 4;
 }
 
 .nav {
     height: 100%;
-    width: 1100px;
-    left: -900px;
-    background-color: mediumvioletred;
-    border: 2px solid yellow;
+    width: 90%;
+    min-width: 1000px;
+    transform: translateX(calc(-100% + 83px));
+    /* left: 0; */
+    /* left: -1000px; */
+    background-color: black;
+    border: 2px solid white;
     position: fixed;
     animation: drawCloswAni;
     transition-duration: 0.8s;
-    z-index: 4;
+    z-index: 3;
+}
+
+.active {
+    transform: translateX(0);
 }
 
 .coverBox {
     height: 100%;
     width: 100%;
     color: white;
-    background-color: mediumpurple;
-    border: 2px solid firebrick;
+    background-color: black;
     box-sizing: border-box;
     display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: column;
 }
 
 .box {
-    background-color: deepskyblue;
-    border: 2px solid darkcyan;
+    /* background-color: deepskyblue;
+    border: 2px solid darkcyan; */
     box-sizing: border-box;
     text-align: center;
 }
 
-.dateBox {
+
+.head {
     font-size: 20px;
 }
 
-.active {
-    left: 0;
-    animation: drawOpenAni;
-    transition-duration: 0.8s;
+.monthBox {
+    /* display:flex;
+    justify-content:flex-end; */
+    float: right;
+    width: 800px;
+    margin-top: 20px;
+    margin-right: 8%;
+    height: 100%;
 }
 
-@keyframes drawOpenAni {
-    0% {
-        left: -700px;
-    }
-    100% {
-        left: 0;
-    }
+.month-wrapperr {
+    display: grid;
+    height: 87%;
+    min-height: 650px;
+    grid-template-columns: repeat(7, 14.28%);
+    grid-template-rows: 35px repeat(5, 1fr);
+    /* background-color: tomato; */
 }
 
-@keyframes drawCloseAni {
-    0% {
-        left: 0;
-    }
-    100% {
-        left: -700px;
-    }
+.head {
+    color:white;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.dayBox {
+    display: flex;
+    justify-content: center;
+}
+
+.dayBox {
+    display: flex;
+    width: 100%;
+    height: 95%;
+    /* background-color: teal; */
+}
+
+.day {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    top: 50%;
+    /* margin-top: -100px; */
+    /* line-height: 10; */
+    text-align: center;
+    background: #212121;
+    border: 1px solid white;
+    border-radius: 100%;
+}
+
+.dayText{
+    color:white;
+    font-size:16px;
 }
 </style>

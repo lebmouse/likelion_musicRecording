@@ -1,128 +1,174 @@
 <template>
-<section>
+<section id="musicHead">
   <div class="mainBox">
-    <div class="box left-box">
-      <div class="cover left-cover">
-        <button class="cover-button">          
+    <swiper :options="swiperOption" class="cover-contents">
+      <swiper-slide class="box" v-for="i in 30" :key="i">
+        <div class="dateBox">
+          <span class="date">{{i}}th</span>
+        </div>
+        <div class="cover">
           <img src="../assets/img1.jpg" class="cover-image">
-        </button>
+        </div>
+      </swiper-slide>
+    </swiper>
+    <div class="buttons">
+      <div class="btnBox leftBtn">
         <button class="audio-button">
           <i class="material-icons">fast_rewind</i>
-        </button>
+      </button>
       </div>
-    </div>
-    <div class="box center-box">
-      <div class="cover center-cover">
-        <button class="cover-button">          
-          <img src="../assets/img2.jpg" class="cover-image">
-        </button>
+      <div class="btnBox centerBtn">
         <button class="audio-button">
           <i class="material-icons">play_arrow</i>
-        </button>
+      </button>
       </div>
-    </div>
-    <div class="box right-box">
-      <div class="cover right-cover">
-        <button class="cover-button">
-          <img src="../assets/img3.jpg" class="cover-image">
-        </button>
+      <div class="btnBox rightBtn">
         <button class="audio-button">
           <i class="material-icons">fast_forward</i>
-        </button>
+      </button>
       </div>
     </div>
   </div>
+
+
 </section>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      swiperOption: {
+        // width:1000,
+        slidesPerView: 3,
+        // spaceBetween: 100,
+        grabCursor: true,
+        keyboard: true,
+        mousewheel: true,
+        // replaceState: true,
+        slidesOffsetBefore : 100,
+        // slidesOffsetAfter : 100,
+      },
+    }
+  },
+  methods: {
+    leftCover() {
+
+    },
+    rightCover() {
+      console.log("rigting");
+      let now = this.nowCover;
+      this.covers.scrollLeft -= 300;
+    },
+    test() {
+      console.log("testing");
+    }
+
+  }
+};
 </script>
 
 <style scoped>
 .mainBox {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-  min-width: 800px;
-  height: 430px;
-  background-color: #212121;
+  position: relative;
+}
+
+.cover-contents {
+  z-index: 1;
+}
+
+.buttons {
+  top: 0;
+  margin-left:100px;
+  position: absolute;
+
 }
 
 .box {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 33.33%;
-  min-width:400px;
-  height: 100%;
-  /* 알아보기 위한 수단 */
-  background-color: #616161;
-  border: 2px solid;
-  border-color: red;
-  box-sizing: border-box;
+  flex-shrink: 0;
+  height: 420px;
+  /* background-color: #616161;
+  border: 1px solid blue;
+  box-sizing: border-box; */
+}
+
+.date {
+  font-size: 30px;
+  color: white;
+  /* border: 2px solid red; */
+  /* background-color: #BDBDBD; */
 }
 
 .cover {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 400px;
-  height: 400px;
-  background-color: #212121;
-  border: 2px solid;
-  /* border-radius:100%; */
-  border-color: red;
+  width: 350px;
+  height: 350px;
+  /* background-color: #BDBDBD; */
+  /* border: 2px solid white; */
+  border-radius: 100%;
   box-sizing: border-box;
 }
 
-.cover-button{
-  /* width: 400px;
-  height: 400px;
-  border: 2px solid white; */
-  border-radius: 100%;
-  /* float:left; */
-  /* position: absolute; */
-}
-
 .cover-image {
-  width: 400px;
-  height: 400px;
-  border: 2px solid blue;
+  width: 350px;
+  height: 350px;
   border-radius: 100%;
-  /* box-sizing: border-box; */
+  border: 2px solid white;
 }
 
-.cover-image:hover{
-  width:405px;
-  height: 405px;
-  border:3px solid rgba(0, 0, 255, 0.514);
-  animation: coverHover 0.2s;
+.cover-image:hover {
+  transform: scale(1.05);
+  animation: coverHover;
+  transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 @keyframes coverHover {
-  0%{
-    width: 400px;
-  height: 400px;
-  border: 2px solid blue;
+  from {
+    transform: scale(1);
   }
-  100%{
-    width:405px;
-  height: 405px;
-  border:3px solid rgba(0, 0, 255, 0.514);
+  to {
+    transform: scale(1.05);
   }
 }
 
-.audio-button{
-  position: absolute;
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.audio-button i{
+.btnBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33.33%;
+  height: 420px;
+  /* background-color: blue; */
+  /* border: 2px solid black; */
+}
+
+.audio-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.audio-button i {
+  margin-top: 30px;
   color: white;
-  font-size: 3em;
+  font-size: 40px;
+  z-index: 2;
 }
 
-.audio-button i:hover{
-  color:rgba(255, 255, 255, 0.747);
+.audio-button i:hover {
+  color: rgba(255, 255, 255, 0.726);
 }
+
 </style>

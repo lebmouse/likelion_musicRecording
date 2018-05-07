@@ -1,19 +1,20 @@
 <template>
-  <section>
-      <div class="mainBox">
-          <div class="contentsBox">
-              <div class="box dayBox">
-                  TODAY
-              </div>
-              <div class="box playerBox">
-                  플레이어
-              </div>
-              <div class="box signBox">
-                  Logout
-              </div>
-          </div>
-      </div>
-  </section>
+<v-footer class="music-footer">
+    <div class="mainBox">
+        <div class="contentsBox">
+            <div class="box dayBox">
+                TODAY
+            </div>
+            <div class="box playerBox">
+                <audio controls style="height:25px; background-color:black">
+                </audio>
+            </div>
+            <div class="box signBox">
+                Logout
+            </div>
+        </div>
+    </div>
+</v-footer>
 </template>
 
 <script>
@@ -23,25 +24,31 @@ export default {
 </script>
 
 <style scoped>
+.music-footer {
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    margin-left:180px;
+}
+
 .mainBox {
-    width: 100%;
-    background-color: #212121;
-    
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
+    /* background-color: #5f2d99; */
 }
 
 .contentsBox {
-    /* width: 500px; */
-    /* height: 100%; */
-    background-color: #616161;
-    
-    border: 1px solid black;
-    margin: 0 auto;
     display: flex;
     justify-content: center;
+    /* background-color: #861440; */
 }
 
 .box {
-    border: 1px solid red;
+    margin-left: 5px;
+    margin-right: 5px;
     color: white;
+    /* background-color: green;
+    border: 1px solid white; */
 }
 </style>

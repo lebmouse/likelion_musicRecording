@@ -22,11 +22,10 @@
         <div class="box dateBox">
             <div class="date">
                 <div class="dateIcon">
-                    <i class="material-icons">cloud</i>
-                    <span class="temperature">24</span>
-                    <span>.C</span>
-                    <div class="location">서울시 성북구 안암동2가 안암동 주민센터</div>
+                    <i class="wi wi-day-cloudy"></i>
+                    <div class="temperature">24℃</div>
                 </div>
+                <div class="location">서울시 성북구 안암동2가 안암동 주민센터</div>
             </div>
         </div>
     </div>
@@ -34,37 +33,42 @@
 </template>
 
 <script>
+import img1 from '../assets/dot.png'
 export default {
+    data() {
+        return {
+            img1: img1
+        }
+    }
 
 }
 </script>
 
 <style scoped>
 .mainBox {
+    margin-left:100px;
     width: 100%;
     min-width: 800px;
-    height: 250px;
-    background-color: #212121;
+    /* background-color: #212121; */
 }
 
 .contentsBox {
     /* width: 500px; */
     height: 100%;
-    background-color: #616161;
-    margin: 0 auto;
     display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: column;
 }
 
 .box {
-    border: 1px solid red;
     color: white;
+    /* background-color: #212121; */
 }
 
 .nameBox {
     font-size: 2.2em;
     text-align: center;
+    margin-top: 5px;
+    margin-bottom: 10px;
 }
 
 .desBox {
@@ -75,21 +79,38 @@ export default {
 
 .description {
     background-color: rgb(48, 45, 45);
-    padding: 15px 5px;
-    width: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 480px;
 }
 
 .dateBox {
     text-align: center;
-    margin-top: auto;
-    margin-bottom: 0;
+    margin-top: 15px;
     display: flex;
     justify-content: center;
 }
 
 .date {
     background-color: rgb(48, 45, 45);
-    padding: 15px 8px 15px 8px;
-    width: 500px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 480px;
+}
+.dateIcon{
+    font-size:20px;
+    display: flex;
+    justify-content: center;
+    /* align-content: center; */
+    align-items: center;
+    margin-bottom:7px;
+}
+.temperature{
+    margin-left: 6px;
+    margin-top:-3px;
+}
+
+.dateIcon img {
+    background-color: white;
 }
 </style>
