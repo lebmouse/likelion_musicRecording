@@ -5,7 +5,7 @@
             <div class="box nameBox">
                 <div class="name">
                     <i class="material-icons">music_note</i>
-                    <span class="singerName">SINGER</span>
+                    <span class="singerName">{{singer}}</span>
                     <span>-</span>
                     <span class="musicName">MUSIC NAME</span>
                     <i class="material-icons">music_note</i>
@@ -39,14 +39,19 @@ export default {
         return {
             img1: img1
         }
+    },
+    computed: {
+        singer(){
+            console.log(this.$store.state.data[0].month[0].data[0]);
+            return this.$store.state.data[0].month[0].data[0].singer;
+        }
     }
-
 }
 </script>
 
 <style scoped>
 .mainBox {
-    margin-left:100px;
+    margin-left: 100px;
     width: 100%;
     min-width: 800px;
     /* background-color: #212121; */
@@ -97,17 +102,19 @@ export default {
     padding-bottom: 20px;
     width: 480px;
 }
-.dateIcon{
-    font-size:20px;
+
+.dateIcon {
+    font-size: 20px;
     display: flex;
     justify-content: center;
     /* align-content: center; */
     align-items: center;
-    margin-bottom:7px;
+    margin-bottom: 7px;
 }
-.temperature{
+
+.temperature {
     margin-left: 6px;
-    margin-top:-3px;
+    margin-top: -3px;
 }
 
 .dateIcon img {
